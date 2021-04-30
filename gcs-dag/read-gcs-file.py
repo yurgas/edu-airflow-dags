@@ -8,7 +8,7 @@ from airflow.utils.dates import days_ago
 PROJECT_ID = Variable.get("gcp-project-id")
 
 with models.DAG(
-    "example_gcs_to_local2",
+    "example_gcs_to_local3",
     start_date=days_ago(1),
     schedule_interval=None,
     tags=['example'],
