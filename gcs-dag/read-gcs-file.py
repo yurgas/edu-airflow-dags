@@ -36,7 +36,7 @@ with models.DAG(
 ) as dag:
     download_file = GCSToLocalFilesystemOperator(
         task_id="download_file",
-        object_name=PATH_TO_REMOTE_FILE,
+#         object_name=PATH_TO_REMOTE_FILE,
         bucket=BUCKET,
         filename=PATH_TO_LOCAL_FILE,
     )
