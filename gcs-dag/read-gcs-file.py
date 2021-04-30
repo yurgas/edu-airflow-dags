@@ -16,7 +16,6 @@ with models.DAG(
     # [START howto_operator_gcs_download_file_task]
     download_file = GCSToLocalFilesystemOperator(
         task_id="download_file",
-        object_name="test-gcs-example-remote.txt",
         bucket="my-test-airflow-gcs-bucket",
         filename="test-gcs-example-local.txt",
     )
