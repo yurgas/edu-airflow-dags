@@ -21,6 +21,7 @@ from airflow import models
 from airflow.models import Variable
 from airflow.providers.google.cloud.transfers.gcs_to_local import GCSToLocalFilesystemOperator
 from airflow.utils.dates import days_ago
+from airflow.operators.bash import BashOperator
 
 
 BUCKET = "my-test-airflow-gcs-bucket"
