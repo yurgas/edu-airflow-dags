@@ -13,4 +13,4 @@ with models.DAG(
     schedule_interval=None,
     tags=['example'],
 ) as dag:
-    download_file = GCSToLocalFilesystemOperator(task_id="download_file",bucket="my-test-airflow-gcs-bucket",filename="test-gcs-example-local.txt",)
+    download_file = GCSToLocalFilesystemOperator(task_id="download_file",bucket="my-test-airflow-gcs-bucket",filename="test-gcs-example-local.txt")
