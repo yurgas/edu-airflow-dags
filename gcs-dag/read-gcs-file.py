@@ -27,8 +27,8 @@ from airflow.operators.bash import BashOperator
 BUCKET = "my-test-airflow-gcs-bucket"
 PROJECT_ID = Variable.get("gcp-project-id")
 
-PATH_TO_REMOTE_FILE = os.environ.get("GCP_GCS_PATH_TO_UPLOAD_FILE", "test-gcs-example-remote.txt")
-PATH_TO_LOCAL_FILE = os.environ.get("GCP_GCS_PATH_TO_SAVED_FILE", "test-gcs-example-local.txt")
+PATH_TO_REMOTE_FILE = "test-gcs-example-remote.txt"
+PATH_TO_LOCAL_FILE = "test-gcs-example-local.txt"
 
 with models.DAG(
     "example_gcs_to_local",
@@ -49,3 +49,7 @@ with models.DAG(
     )
     
     download_file >> run_this
+    
+if __name__ == '__main__':
+    dag.clear(dag_run_state=State.NONE)
+    dag.run()
