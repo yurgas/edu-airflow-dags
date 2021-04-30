@@ -35,11 +35,16 @@ with models.DAG(
     schedule_interval=None,
     tags=['example'],
 ) as dag:
-    # [START howto_operator_gcs_download_file_task]
     download_file = GCSToLocalFilesystemOperator(
         task_id="download_file",
         object_name=PATH_TO_REMOTE_FILE,
         bucket=BUCKET,
         filename=PATH_TO_LOCAL_FILE,
     )
-    # [END howto_operator_gcs_download_file_task]
+    
+    run_this = BashOperator(
+        task_id='output_file',
+        bash_command='cat ' + PATH_TO_LOCAL_FILE,
+    )
+    
+    download_file >> run_this
