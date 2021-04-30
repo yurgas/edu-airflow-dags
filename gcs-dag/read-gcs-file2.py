@@ -20,7 +20,7 @@ dag = DAG(
 
 download_file = GCSToLocalFilesystemOperator(
     task_id='download_file2',
-    object='test-gcs-example-local.txt',
+    object_name="abcdef",
     gcp_conn_id='my_gcp',
     bucket='my-test-airflow-gcs-bucket',
     filename='test-gcs-example-local.txt',
