@@ -50,6 +50,5 @@ with models.DAG(
     
     download_file >> run_this
     
-if __name__ == '__main__':
-    dag.clear(dag_run_state=State.NONE)
-    dag.run()
+if __name__ == "__main__":
+    dag.cli()
