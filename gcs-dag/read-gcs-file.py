@@ -19,7 +19,7 @@ import os
 
 from airflow import models
 from airflow.models import Variable
-from airflow.operators.bash import BashOperator
+# from airflow.operators.bash import BashOperator
 from airflow.providers.google.cloud.transfers.gcs_to_local import GCSToLocalFilesystemOperator
 from airflow.utils.dates import days_ago
 
@@ -43,12 +43,12 @@ with models.DAG(
         filename=PATH_TO_LOCAL_FILE,
     )
     
-    run_this = BashOperator(
-        task_id='output_file',
-        bash_command='cat ' + PATH_TO_LOCAL_FILE,
-    )
+#     run_this = BashOperator(
+#         task_id='output_file',
+#         bash_command='cat ' + PATH_TO_LOCAL_FILE,
+#     )
     
-    download_file >> run_this
+#     download_file >> run_this
     
 if __name__ == "__main__":
     dag.cli()
