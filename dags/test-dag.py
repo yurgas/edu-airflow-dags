@@ -55,7 +55,7 @@ run_this = BashOperator(
     task_id='run_after_loop',
     bash_command=command,
     dag=dag,
-    params={GCP_PROJECT_ID: os.getnev('GCP_PROJECT_ID'), GCP_PROJECT_NAME: os.getenv('GCP_PROJECT_NAME')},
+    params={GCP_PROJECT_ID: os.getenv('GCP_PROJECT_ID'), GCP_PROJECT_NAME: os.getenv('GCP_PROJECT_NAME')},
 )
 # [END howto_operator_bash]
 
