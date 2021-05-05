@@ -46,8 +46,8 @@ run_this_last = DummyOperator(
 )
 
 command = """
-        echo "{{ params.GCP_PROJECT_ID }}"
-        echo "{{ params.GCP_PROJECT_NAME }}"
+        echo "{{ params.PROJECT_ID }}"
+        echo "{{ params.PROJECT_NAME }}"
 """
 
 # [START howto_operator_bash]
@@ -55,7 +55,7 @@ run_this = BashOperator(
     task_id='run_after_loop',
     bash_command=command,
     dag=dag,
-    params={"GCP_PROJECT_ID": os.getenv('GCP_PROJECT_ID'), "GCP_PROJECT_NAME": os.getenv('GCP_PROJECT_NAME')},
+    params={"PROJECT_ID": os.getenv('PROJECT_ID'), "PROJECT_NAME": os.getenv('PROJECT_NAME')},
 )
 # [END howto_operator_bash]
 
