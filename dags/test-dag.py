@@ -48,9 +48,8 @@ run_this_last = DummyOperator(
 # [START howto_operator_bash]
 run_this = BashOperator(
     task_id='run_after_loop',
-    bash_command='echo "GCP_PROJECT_ID: {{ GCP_PROJECT_ID }}, GCP_PROJECT_NAME: {{ GCP_PROJECT_NAME }}"',
+    bash_command='echo "GCP_PROJECT_ID: $GCP_PROJECT_ID , GCP_PROJECT_NAME: $GCP_PROJECT_NAME"',
     dag=dag,
-    params={ "GCP_PROJECT_ID": os.getenv('GCP_PROJECT_ID'), "GCP_PROJECT_NAME": os.getenv('GCP_PROJECT_NAME') },
 )
 # [END howto_operator_bash]
 
