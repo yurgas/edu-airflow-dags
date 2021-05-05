@@ -27,9 +27,6 @@ from airflow.utils.dates import days_ago
 
 import os
 
-GCP_PROJECT_ID = os.getenv('GCP_PROJECT_ID')
-GCP_PROJECT_NAME = os.getenv('GCP_PROJECT_NAME')
-
 args = {
     'owner': 'airflow',
 }
@@ -40,8 +37,8 @@ dag = DAG(
     schedule_interval='0 0 * * *',
     start_date=days_ago(2),
     dagrun_timeout=timedelta(minutes=60),
-    tags=['example', 'example2'],
-    params={"example_key": "example_value"},
+    tags=['example'],
+    params={ "GCP_PROJECT_ID": os.getenv('GCP_PROJECT_ID'), "GCP_PROJECT_NAME": os.getenv('GCP_PROJECT_NAME') },
 )
 
 run_this_last = DummyOperator(
