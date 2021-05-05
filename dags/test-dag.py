@@ -25,6 +25,11 @@ from airflow.operators.bash import BashOperator
 from airflow.operators.dummy import DummyOperator
 from airflow.utils.dates import days_ago
 
+import os
+
+GCP_PROJECT_ID = os.getenv('GCP_PROJECT_ID')
+GCP_PROJECT_NAME = os.getenv('GCP_PROJECT_NAME')
+
 args = {
     'owner': 'airflow',
 }
@@ -47,7 +52,7 @@ run_this_last = DummyOperator(
 # [START howto_operator_bash]
 run_this = BashOperator(
     task_id='run_after_loop',
-    bash_command='echo 1; python --version',
+    bash_command='echo "GCP_PROJECT_ID: {{ GCP_PROJECT_ID }}, GCP_PROJECT_NAME: {{ GCP_PROJECT_NAME }}"',
     dag=dag,
 )
 # [END howto_operator_bash]
