@@ -6,7 +6,7 @@ from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.utils.dates import days_ago
 
-from shared.test_module.test_module import TestClass
+from test_module.test_module import TestClass
 
 args = {
     'owner': 'airflow',
