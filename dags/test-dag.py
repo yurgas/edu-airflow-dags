@@ -38,7 +38,6 @@ dag = DAG(
     start_date=days_ago(2),
     dagrun_timeout=timedelta(minutes=60),
     tags=['example'],
-    params={ "GCP_PROJECT_ID": os.getenv('GCP_PROJECT_ID'), "GCP_PROJECT_NAME": os.getenv('GCP_PROJECT_NAME') },
 )
 
 run_this_last = DummyOperator(
@@ -51,6 +50,7 @@ run_this = BashOperator(
     task_id='run_after_loop',
     bash_command='echo "GCP_PROJECT_ID: {{ GCP_PROJECT_ID }}, GCP_PROJECT_NAME: {{ GCP_PROJECT_NAME }}"',
     dag=dag,
+    params={ "GCP_PROJECT_ID": os.getenv('GCP_PROJECT_ID'), "GCP_PROJECT_NAME": os.getenv('GCP_PROJECT_NAME') },
 )
 # [END howto_operator_bash]
 
