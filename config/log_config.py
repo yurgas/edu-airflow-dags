@@ -128,7 +128,7 @@ if EXTRA_LOGGER_NAMES:
     }
     LOGGING_CONFIG['loggers'].update(new_loggers)
 
-DEFAULT_DAG_PARSING_LOGGING_CONFIG: Dict[str, Dict[str, Dict[str, Any]]] = {
+DAG_PARSING_LOGGING_CONFIG: Dict[str, Dict[str, Dict[str, Any]]] = {
     'handlers': {
         'processor_manager': {
             'class': 'logging.handlers.RotatingFileHandler',
@@ -152,12 +152,12 @@ DEFAULT_DAG_PARSING_LOGGING_CONFIG: Dict[str, Dict[str, Dict[str, Any]]] = {
 # This is to avoid exceptions when initializing RotatingFileHandler multiple times
 # in multiple processes.
 if os.environ.get('CONFIG_PROCESSOR_MANAGER_LOGGER') == 'True':
-    LOGGING_CONFIG['handlers'].update(DEFAULT_DAG_PARSING_LOGGING_CONFIG['handlers'])
-    LOGGING_CONFIG['loggers'].update(DEFAULT_DAG_PARSING_LOGGING_CONFIG['loggers'])
+    LOGGING_CONFIG['handlers'].update(DAG_PARSING_LOGGING_CONFIG['handlers'])
+    LOGGING_CONFIG['loggers'].update(DAG_PARSING_LOGGING_CONFIG['loggers'])
 
     # Manually create log directory for processor_manager handler as RotatingFileHandler
     # will only create file but not the directory.
-    processor_manager_handler_config: Dict[str, Any] = DEFAULT_DAG_PARSING_LOGGING_CONFIG['handlers'][
+    processor_manager_handler_config: Dict[str, Any] = DAG_PARSING_LOGGING_CONFIG['handlers'][
         'processor_manager'
     ]
     directory: str = os.path.dirname(processor_manager_handler_config['filename'])
