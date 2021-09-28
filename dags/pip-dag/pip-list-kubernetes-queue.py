@@ -20,7 +20,7 @@ dag = DAG(
 
 pip_list = BashOperator(
     task_id='get_pip_list',
-    bash_command='pip version; pip list',
+    bash_command='pip --version; pip list',
     dag=dag,
     queue="kubernetes"
 )
