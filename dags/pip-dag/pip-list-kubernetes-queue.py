@@ -11,7 +11,7 @@ args = {
 }
 
 dag = DAG(
-    dag_id='pip_list_dag',
+    dag_id='pip_list_dag_kubernetes_queue',
     default_args=args,
     schedule_interval='0 0 * * *',
     start_date=days_ago(2),
