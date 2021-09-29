@@ -35,7 +35,7 @@ run_this = PythonOperator(
         "KubernetesExecutor": {
             "request_memory": "128Mi",
             "request_cpu": "100m",
-            "limit_memory": "128Mi",
+            "limit_memory": "256Mi",
             "limit_cpu": "100m"
         }
     }
