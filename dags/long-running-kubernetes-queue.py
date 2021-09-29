@@ -30,7 +30,15 @@ run_this = PythonOperator(
     task_id='long_running_task',
     python_callable=work_in_cycle,
     dag=dag,
-    queue="kubernetes"
+    queue="kubernetes",
+    executor_config={
+        "KubernetesExecutor": {
+            "request_memory": "128Mi",
+            "request_cpu": "",
+            "limit_memory": "128Mi",
+            "limit_cpu": ""
+        }
+    }
 )
 
 if __name__ == "__main__":
